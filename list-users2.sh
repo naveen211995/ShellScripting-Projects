@@ -36,7 +36,7 @@ function list_users_with_read_access {
 	local endpoint="repos/${REPO_OWNER}/${REPO_NAME}/collaborators"
 
 	#Fetch the list of collaborators on the repository
-	collaborators="$(github_get_api "$endpoint" | jq -r '.[] | select(.permission.pull == true) | .login')"	
+	collaborators="$(github_get_api "$endpoint" | jq -r '.[] | select(.permissions.pull == true) | .login')"	
 
 	#Display the list of collaborators with read access
 	if [[ -z "$collaborators" ]]; then
